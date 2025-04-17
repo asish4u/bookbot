@@ -1,4 +1,5 @@
 
+import sys
 from stats import (
     get_book_text,
     get_num_words,
@@ -8,7 +9,14 @@ from stats import (
 
 def main():
 
-    path = "books/frankenstein.txt"
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    else:
+        path = sys.argv[1]
+        if not path.endswith('.txt'):
+            print("Please provide a valid .txt file")
+            sys.exit(1)
     
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {path}...")
